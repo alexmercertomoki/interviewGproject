@@ -1,53 +1,91 @@
-var Todo = require('./models/todo');
+var Food = require('./models/food');
 
-function getTodos(res) {
-    Todo.find(function (err, todos) {
+function getFoods(res) {
+    Food.find(function (err, foods) {
 
         // if there is an error retrieving, send the error. nothing after res.send(err) will execute
         if (err) {
             res.send(err);
         }
 
-        res.json(todos); // return all todos in JSON format
+        res.json(foods); // return all Foods in JSON format
     });
-}
-;
+};
+
+function getTotal(res) {
+    Food.find(function (err, foods) {
+
+        // if there is an error retrieving, send the error. nothing after res.send(err) will execute
+        if (err) {
+            res.send(err);
+        }
+
+        var subtotal = 0;
+        var tax = 0;
+
+        for(idx in foods) {
+            subtotal += foods[idx].price;
+        }
+
+        tax = Math.round(subtotal * 7.5) / 100; 
+        var sum = subtotal + tax;
+
+        var total = {
+            subtotal : subtotal, 
+            tax : tax,
+            sum : sum
+        }
+     
+
+        res.json(total); // return all Foods in JSON format
+    });
+};
+
 
 module.exports = function (app) {
 
     // api ---------------------------------------------------------------------
-    // get all todos
-    app.get('/api/todos', function (req, res) {
-        // use mongoose to get all todos in the database
-        getTodos(res);
+    // get all Foods
+    app.get('/api/foods', function (req, res) {
+        // use mongoose to get all Foods in the database
+        getFoods(res);
     });
 
-    // create todo and send back all todos after creation
-    app.post('/api/todos', function (req, res) {
 
-        // create a todo, information comes from AJAX request from Angular
-        Todo.create({
-            text: req.body.text,
+    app.get('/api/total', function (req, res) {
+        // use mongoose to get all Foods in the database
+        getTotal(res);
+
+    });
+
+    // create Food and send back all Foods after creation
+    app.post('/api/food', function (req, res) {
+
+        // create a Food, information comes from AJAX request from Angular
+        Food.create({
+            foodname: req.body.foodname,
+            price: req.body.price,
+            description : req.body.description,
             done: false
-        }, function (err, todo) {
+        }, function (err, food) {
             if (err)
                 res.send(err);
 
-            // get and return all the todos after you create another
-            getTodos(res);
+            // get and return all the Foods after you create another
+            getFoods(res);
         });
 
     });
 
-    // delete a todo
-    app.delete('/api/todos/:todo_id', function (req, res) {
-        Todo.remove({
-            _id: req.params.todo_id
-        }, function (err, todo) {
+    // delete a Food
+    app.delete('/api/food/:food_id', function (req, res) {
+        Food.remove({
+            _id: req.params.food_id
+        }, function (err, food) {
             if (err)
                 res.send(err);
 
-            getTodos(res);
+            getFoods(res);
         });
     });
 
