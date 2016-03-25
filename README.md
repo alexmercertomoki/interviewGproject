@@ -1,4 +1,4 @@
-# Node Todo App
+# Node Food App
 
 A Node app built with MongoDB and Angular. For demonstration purposes and a tutorial.
 
@@ -17,7 +17,7 @@ Node provides the RESTful API. Angular provides the frontend and accesses the AP
 
 ## Tutorial Series
 
-This repo corresponds to the Node Todo Tutorial Series on [scotch.io](http://scotch.io)
+This repo corresponds to the Node todo Tutorial Series on [scotch.io](http://scotch.io)
 
 Each branch represents a certain tutorial.
 - tut1-starter: [Creating a Single Page Todo App with Node and Angular](http://scotch.io/tutorials/javascript/creating-a-single-page-todo-app-with-node-and-angular)
@@ -27,6 +27,6 @@ Each branch represents a certain tutorial.
 - tut5-redis: Coming Soon
 - tut6-organization: Coming Soon
 
-Happy Todo-ing!
+Happy eat ing!
 
-![Todo-aholic](http://i.imgur.com/ikyqgrn.png)
+![EAting-aholic](http://i.imgur.com/ikyqgrn.png)
