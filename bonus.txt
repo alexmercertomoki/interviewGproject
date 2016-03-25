@@ -1,0 +1,3 @@
+bonus.txt
+In addition adding all kinds of food onto the site and calculating the money,
+I also ranked the food by price that the chef can choose the first priority to cook.
