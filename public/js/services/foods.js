@@ -15,6 +15,15 @@ angular.module('foodService', [])
 			},
 			delete : function(id) {
 				return $http.delete('/api/food/' + id);
+			},
+			createOrder : function(orderData) {
+				return $http.post('/api/order/', orderData);
 			}
+
+
+
+			// update : function(foodData) {
+			// 	return $http.post('/api/food/' + id, foodData);
+			// }
 		}
 	}]);

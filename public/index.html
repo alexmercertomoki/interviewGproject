@@ -50,7 +50,8 @@
 						
 						<div class="row">
 							<div class="col-sm-1">
-							<input type="checkbox" ng-click="deleteFood(food._id)"> 
+							<input type="checkbox" ng-click="deleteFood(food._id)">
+
 							</div>
 
 							<div class="col-sm-4">
@@ -74,8 +75,7 @@
 				<div class="row">
 					
 						<div class="col-sm-2 col-sm-offset-5">
-							Subtotal: {{total.subtotal}}   
-
+							Subtotal: {{total.subtotal}}
 						</div>
 						
 						<div class="col-sm-2">
@@ -116,7 +116,10 @@
 						<!-- createFood() WILL CREATE NEW foodS -->
 						<button type="submit" class="btn btn-primary btn-lg" ng-click="createFood()">Add</button>
 
-					</div>
+                        <button type="submit" class="btn btn-primary btn-lg" ng-click="createOrder()">CheckOut</button>
+
+
+                    </div>
 				
 				</form>
 			</div>
